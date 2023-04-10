@@ -1,9 +1,9 @@
 
-import Image from 'next/image'
 import { useState } from 'react'
+import { LazyImage } from '../components/lazyImage'
 
 const API = 'https://api.thedogapi.com/v1/images/search'
-interface Dog {
+export interface Dog {
   id: string
   url: string
   width: number
@@ -34,7 +34,7 @@ export default function Home() {
       </button>
       <span>{`Hay un total de ${images.length} imagenes`}</span>
       {images.map((img) => (
-        <Image src={img.url} width={img.width} height={img.height} key={img.id} alt={'perro'}/>
+        <LazyImage key={img.id} src={img.url} onLazyLoad={(img)=>{console.log('uwu')}}  />
       ))}
     </main>
   )
