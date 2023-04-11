@@ -1,5 +1,5 @@
-import React, { ImgHTMLAttributes, useEffect, useRef, useState } from 'react'
-import { Dog } from '../pages'
+import { useEffect, useRef, useState } from 'react'
+import type { ImgHTMLAttributes } from 'react'
 
 interface Props extends ImgHTMLAttributes<HTMLImageElement> {
   src: string
@@ -30,7 +30,7 @@ export function LazyImage({ src, onLazyLoad, ...props }: Props) {
     }
   }, [src, onLazyLoad, isLoad])
   return (
-    <img  
+    <img
       ref={node}
       src={currentSrc}
       width={400}

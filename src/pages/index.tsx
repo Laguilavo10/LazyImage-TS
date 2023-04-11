@@ -3,20 +3,15 @@ import { useState } from 'react'
 import { LazyImage } from '../components/lazyImage'
 
 const API = 'https://api.thedogapi.com/v1/images/search'
-export interface Dog {
-  id: string
-  url: string
-  width: number
-  height: number
-}
+
 export default function Home() {
   const [images, setImages] = useState<Dog[]>([])
-
   const addImage = async () => {
     const dataFetched = await fetch(API)
     const [data]: Dog[] = await dataFetched.json()
     setImages([...images, data])
   }
+
   return (
     <main className='flex flex-col items-center w-10/12 gap-5 my-24 m-auto'>
       <h1 className='text-3xl font-bold'>Componente Lazy Image</h1>
